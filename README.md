@@ -1,8 +1,8 @@
 classDiagram
 namesapce iv {
     class IntVector {
-        - int* array_
-        - size_t size_
+        - int* array
+        - size_t size
         - size_t capacity
         
         
