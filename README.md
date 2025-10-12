@@ -1,3 +1,30 @@
+classDiagram
+namesapce iv {
+    class IntVector {
+        - int* array_
+        - size_t size_
+        - size_t capacity
+        
+        
+        + IntVector()
+        + IntVector(size_t capacity)
+        + ~IntVector()
+        + void zeros()
+        + void ones()
+        + void range()
+        + void push_back()
+        + void insert_override()
+        + std::size_t count()
+        + int index()
+        + void print()
+        + std::size_t get_size()
+        + std::size_t get_capacity()
+        + void resize(std::size_t new_capacity)
+        + long int sum()
+        + int pop_back()
+    }
+}
+
 # IntVector
 
 A simple dynamic integer vector class implementation in C++.
