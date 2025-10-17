@@ -6,7 +6,6 @@ namespace iv
 
 IntVector::IntVector()
 {
-    std::cout << "Constructor without parameter" << std::endl;
     capacity = 0;
     size = 0;
     array = nullptr;
@@ -14,14 +13,12 @@ IntVector::IntVector()
 
 IntVector::IntVector ( std::size_t capacity )
 {
-    std::cout << "Constructor with parameter" << std::endl;
     this->capacity = capacity;
     size = 0;
     array = new int[capacity];
 }
 IntVector::~IntVector()
 {
-    std::cout << "Destructor" << std::endl;
     delete[] array;
     capacity = 0;
     size = 0;
@@ -38,15 +35,14 @@ void IntVector::zeros()
     size = capacity;
 
 }
-void IntVector::print()
-{   
-    std::cout << "capacity: " << capacity << std::endl;
-    std::cout << "size : " << size << std::endl;
+void IntVector::print(std::ostream& where=std::cout){
+    
     for(size_t i = 0; i < size; i++){
-        std::cout << array[i] << " ";
+        where << array[i] << " ";
     }
-    std::cout << std::endl; 
+    where << std::endl; 
 }
+
 void IntVector::ones()
 {
     for ( size_t i = 0; i < capacity; i++ ) {
@@ -105,13 +101,19 @@ void IntVector::push_back ( int elem )
             array[index] = elem;
             // if we are faraway from the actuall size.
             // fill the gaps with zeros.
-            if(index > size){
+            if(index >= size){
                 for(size_t i = size; i < index; i++){
                     array[i] = 0;
                 }
                 size = index + 1;
             }
         }
+    // 0, 1
+    // 1, _,
+    // cap = 2
+    // size = 1
+    // insert_override(0, 1)
+        
         
         
     
@@ -151,6 +153,15 @@ void IntVector::push_back ( int elem )
     
         return capacity;
     }
+    
+    int IntVector::get_elem ( std::size_t index ){
+    
+        return array[index];
+}
+
+        
+        
+    
     
     void IntVector::resize(std::size_t new_capacity){
         
@@ -200,6 +211,8 @@ void IntVector::push_back ( int elem )
         
         // Egy mondato összefoglalot irjon kiterve a return ertekekre!
         // szelsö ertek ami függvenyekre veszelyes!
+
+        
     int IntVector::pop_back(){
         if(capacity == 0 || size == 0){
             return 0;

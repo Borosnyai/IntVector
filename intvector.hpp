@@ -31,9 +31,10 @@ namespace iv{
         void insert_override(int index, int elem);
         std::size_t count(int elem);
         int index(int elem);// if number doesn't exit then return - 1;
-        void print();
+        void print(std::ostream& where);
         std::size_t get_size();
         std::size_t get_capacity();
+        int get_elem(std::size_t index);
         void resize(std::size_t new_capacity);
         long int sum();
         
