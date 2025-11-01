@@ -6,60 +6,60 @@ namespace iv
 
 IntVector::IntVector()
 {
-    capacity = 0;
-    size = 0;
-    array = nullptr;
+    capacity_ = 0;
+    size_ = 0;
+    array_ = nullptr;
 }
 
 IntVector::IntVector ( std::size_t capacity )
 {
-    this->capacity = capacity;
-    size = 0;
-    array = new int[capacity];
+    this->capacity_ = capacity;
+    size_ = 0;
+    array_ = new int[capacity];
 }
 IntVector::~IntVector()
 {
-    delete[] array;
-    capacity = 0;
-    size = 0;
-    array = nullptr;
+    delete[] array_;
+    capacity_ = 0;
+    size_ = 0;
+    array_ = nullptr;
 }
 
 void IntVector::zeros()
 {
-    for ( size_t i = 0; i < capacity; i++ ) {
-        array[i] = 0;
+    for ( size_t i = 0; i < capacity_; i++ ) {
+        array_[i] = 0;
 
 
     }
-    size = capacity;
+    size_ = capacity_;
 
 }
 void IntVector::print(std::ostream& where=std::cout){
     
-    for(size_t i = 0; i < size; i++){
-        where << array[i] << " ";
+    for(size_t i = 0; i < size_; i++){
+        where << array_[i] << " ";
     }
     where << std::endl; 
 }
 
 void IntVector::ones()
 {
-    for ( size_t i = 0; i < capacity; i++ ) {
-        array[i] = 1;
+    for ( size_t i = 0; i < capacity_; i++ ) {
+        array_[i] = 1;
 
 
     }
-    size = capacity;
+    size_ = capacity_;
 }
 
 void IntVector::range ( int start )
 {
-    for(size_t i = 0; i < capacity; i++){
-        array[i] = start;
+    for(size_t i = 0; i < capacity_; i++){
+        array_[i] = start;
         start++;
     }
-    size = capacity;
+    size_ = capacity_;
 }
 // append elem to end of the list
 // if not enogh place, change the size.
@@ -70,19 +70,19 @@ void IntVector::push_back ( int elem )
     // size = 7 
     // capacity = 7
     //
-    if(size < capacity){
-        array[size] = elem;
-        size++;
+    if( size_ < capacity_ ){
+        array_[size_] = elem;
+        size_++;
     }else{
-       int* new_array = new int[capacity + 1];
-       for(size_t i = 0; i < capacity; i++){
-           new_array[i] = array[i];
+       int* new_array = new int[capacity_ + 1];
+       for(size_t i = 0; i < capacity_; i++){
+           new_array[i] = array_[i];
         }
-        new_array[size] = elem;
-        size++;
-        capacity++;
-        delete[] array;
-        array = new_array;
+        new_array[size_] = elem;
+        size_++;
+        capacity_++;
+        delete[] array_;
+        array_ = new_array;
         
     }
     
@@ -97,15 +97,15 @@ void IntVector::push_back ( int elem )
         // index = 5
         
         // if this index exist
-        if(index < capacity){
-            array[index] = elem;
+        if(index < capacity_ ){
+            array_[index] = elem;
             // if we are faraway from the actuall size.
             // fill the gaps with zeros.
-            if(index >= size){
-                for(size_t i = size; i < index; i++){
-                    array[i] = 0;
+            if(index >= size_ ){
+                for(size_t i = size_; i < index; i++){
+                    array_[i] = 0;
                 }
-                size = index + 1;
+                size_ = index + 1;
             }
         }
     // 0, 1
@@ -120,8 +120,8 @@ void IntVector::push_back ( int elem )
     }
     std::size_t IntVector::count (int elem){
         size_t c = 0;
-        for(size_t i = 0; i < size; i++){
-            if(array[i] == elem){
+        for(size_t i = 0; i < size_; i++){
+            if( array_[i] == elem){
                 c++;
             }
         }
@@ -136,8 +136,8 @@ void IntVector::push_back ( int elem )
         // elem = 0
         
         int result = -1;
-        for(int i = 0; i < size; i++){
-            if(elem == array[i]){
+        for(int i = 0; i < size_; i++){
+            if(elem == array_[i]){
                 result = i;
                 break;
             }
@@ -146,17 +146,17 @@ void IntVector::push_back ( int elem )
         
     }
     std::size_t IntVector::get_size(){
-        return size;
+        return size_;
     }
     
     std::size_t IntVector::get_capacity(){
     
-        return capacity;
+        return capacity_;
     }
     
     int IntVector::get_elem ( std::size_t index ){
     
-        return array[index];
+        return array_[index];
 }
 
         
@@ -165,33 +165,33 @@ void IntVector::push_back ( int elem )
     
     void IntVector::resize(std::size_t new_capacity){
         
-        if(new_capacity == capacity){
+        if(new_capacity == capacity_ ){
             return;
         }
-        else if(new_capacity > capacity){
+        else if(new_capacity > capacity_ ){
             int* new_array = new int[new_capacity];
-            for(size_t i = 0; i < capacity; i++){
-                new_array[i] = array[i];
+            for(size_t i = 0; i < capacity_; i++){
+                new_array[i] = array_[i];
             }
-            delete[] array;
-            array = new_array;
-            capacity = new_capacity;
+            delete[] array_;
+            array_ = new_array;
+            capacity_ = new_capacity;
         }
-        else if(new_capacity < capacity){
+        else if(new_capacity < capacity_ ){
             int* new_array = new int[new_capacity];
-            if(new_capacity < size){
+            if(new_capacity < size_ ){
                 for(size_t i = 0; i < new_capacity; i++){
-                new_array[i] = array[i];
+                new_array[i] = array_[i];
                 }
-                size = new_capacity;
+                size_ = new_capacity;
             }else{
-                for(size_t i = 0; i < size; i++){
-                    new_array[i] = array[i];
+                for(size_t i = 0; i < size_; i++){
+                    new_array[i] = array_[i];
                 }
             }
-            delete[] array;
-            array = new_array;
-            capacity = new_capacity;
+            delete[] array_;
+            array_ = new_array;
+            capacity_ = new_capacity;
             
             
         }
@@ -199,8 +199,8 @@ void IntVector::push_back ( int elem )
     
     long IntVector::sum(){
         long s = 0;
-        for(size_t i = 0; i < size; i++){
-            s += array[i];
+        for(size_t i = 0; i < size_; i++){
+            s += array_[i];
         }
         return s;
         
@@ -214,12 +214,12 @@ void IntVector::push_back ( int elem )
 
         
     int IntVector::pop_back(){
-        if(capacity == 0 || size == 0){
+        if( capacity_ == 0 || size_ == 0){
             return 0;
         }
-        int last_num = array[size - 1];
+        int last_num = array_[size_ - 1];
         // Removing the last number
-        size--;
+        size_--;
         return last_num;
         
     }

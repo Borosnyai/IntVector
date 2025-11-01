@@ -8,9 +8,9 @@ namespace iv{
     class IntVector{
 
     private:
-        std::size_t capacity;   // Wie viel Platz reservieren
-        std::size_t size;   // Wie viele elemente sind drinnen.
-        int* array;             // Pointer auf dinamische array
+        std::size_t capacity_;   // Wie viel Platz reservieren
+        std::size_t size_;   // Wie viele elemente sind drinnen.
+        int* array_;             // Pointer auf dinamische array
 
 
     public:
