@@ -209,8 +209,7 @@ void IntVector::push_back ( int elem )
         // 0
         // size--, 
         
-        // Egy mondato összefoglalot irjon kiterve a return ertekekre!
-        // szelsö ertek ami függvenyekre veszelyes!
+     
 
         
     int IntVector::pop_back(){
