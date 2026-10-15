@@ -1,30 +1,3 @@
-classDiagram
-namesapce iv {
-    class IntVector {
-        - int* array
-        - size_t size
-        - size_t capacity
-        
-        
-        + IntVector()
-        + IntVector(size_t capacity)
-        + ~IntVector()
-        + void zeros()
-        + void ones()
-        + void range()
-        + void push_back()
-        + void insert_override()
-        + std::size_t count()
-        + int index()
-        + void print()
-        + std::size_t get_size()
-        + std::size_t get_capacity()
-        + void resize(std::size_t new_capacity)
-        + long int sum()
-        + int pop_back()
-    }
-}
-
 # IntVector
 
 A simple dynamic integer vector class implementation in C++.
@@ -95,4 +68,48 @@ v1->push_back(42);
 v1->print();
 delete v1;
 
+```
+
+## Build & Tests
+
+Requires CMake ≥ 3.18 and a C++20 compiler. The build produces the Catch2 test executable.
+
+```bash
+mkdir build && cd build
+cmake ..
+make
+./intvector
+```
+
+Tests live in `intvector_test.cpp` and use [Catch2](https://github.com/catchorg/Catch2) (amalgamated files included).
+
+## Class diagram
+
+```mermaid
+classDiagram
+namespace iv {
+    class IntVector {
+        - int* array
+        - size_t size
+        - size_t capacity
+        
+        
+        + IntVector()
+        + IntVector(size_t capacity)
+        + ~IntVector()
+        + void zeros()
+        + void ones()
+        + void range()
+        + void push_back()
+        + void insert_override()
+        + std::size_t count()
+        + int index()
+        + void print()
+        + std::size_t get_size()
+        + std::size_t get_capacity()
+        + void resize(std::size_t new_capacity)
+        + long int sum()
+        + int pop_back()
+    }
+}
 ```
